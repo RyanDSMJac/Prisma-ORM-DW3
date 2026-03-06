@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Associações</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Sistema de Gestão</h1>
+
+    <div class="container">
+        <section>
+            <h2>Cadastrar Pessoa</h2>
+            <form id="pessoaForm">
+                <input type="text" id="nomePessoa" placeholder="Nome da Pessoa" required>
+                <button type="submit">Adicionar</button>
+            </form>
+            <ul id="pessoaList"></ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Cadastrar Carro</h2>
+            <form id="carroForm">
+                <input type="text" id="modeloCarro" placeholder="Modelo do Carro" required>
+                <button type="submit">Adicionar</button>
+            </form>
+            <ul id="carroList"></ul>
+        </section>
+
+
+        <section>
+            <h2>Cadastrar Telefone</h2>
+            <form id="telefoneForm">
+                <select id="selectPessoaTelefone" required>
+                    <option value="">Selecione a Pessoa</option>
+                </select>
+                <input type="text" id="numeroTelefone" placeholder="Número (Ex: 11999999999)" required maxlength="11">
+                <button type="submit">Adicionar</button>
+            </form>
+            <ul id="telefoneList"></ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Vincular Pessoa a Carro</h2>
+            <form id="associacaoForm">
+                <select id="selectPessoa" required>
+                    <option value="">Selecione a Pessoa</option>
+                </select>
+                <select id="selectCarro" required>
+                    <option value="">Selecione o Carro</option>
+                </select>
+                <button type="submit">Associar</button>
+            </form>
+            <h3>Lista de Associações</h3>
+            <ul id="associacaoList"></ul>
+        </section>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
+
+<hr>
