@@ -1,0 +1,51 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../src/generated/prisma"
+  // Atualizado para o nome correto no Prisma 7
+  previewFeatures = ["schemaEngineDriverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  // A URL não é mais definida aqui no Prisma 7 para Migrate/Client
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model Pessoa {
+  idpessoa Int      @id @default(autoincrement())
+  nome     String
+  
+  telefones         Telefone[]
+  carros_atribuidos PessoaPorCarro[]
+}
+
+model Carro {
+  idcarro Int      @id @default(autoincrement())
+  modelo  String
+  
+  pessoas_donas PessoaPorCarro[]
+}
+
+model Telefone {
+  idtelefone Int    @id @default(autoincrement())
+  numero     String
+  idpessoa   Int
+  
+  pessoa     Pessoa @relation(fields: [idpessoa], references: [idpessoa], onDelete: Cascade)
+}
+
+model PessoaPorCarro {
+  idpessoa Int
+  idcarro  Int
+
+  pessoa   Pessoa @relation(fields: [idpessoa], references: [idpessoa], onDelete: Cascade)
+  carro    Carro  @relation(fields: [idcarro], references: [idcarro], onDelete: Cascade)
+
+  @@id([idpessoa, idcarro])
+}
