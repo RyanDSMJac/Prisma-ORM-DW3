@@ -7,6 +7,7 @@ npm install express prisma @prisma/client dotenv
 npm install -D typescript ts-node-dev @types/node @types/express
 ```
 
+Adicione o .env então rode esses comandos:
 ```bash
 # Requer postgresql instalado
 npx prisma init --datasource-provider postgresql
